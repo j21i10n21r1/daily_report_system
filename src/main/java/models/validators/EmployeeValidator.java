@@ -5,6 +5,7 @@ import java.util.List;
 
 import actions.views.EmployeeView;
 import constants.MessageConst;
+import services.EmployeeService;
 
 /**
  * 従業員インスタンスに設定されている値のバリデーションを行うクラス
@@ -37,7 +38,7 @@ public class EmployeeValidator {
 		}
 
 		//パスワードのチェック
-		String passError = validatePassword(ev.getPasseord(), passwordCheckFlag);
+		String passError = validatePassword(ev.getPassword(), passwordCheckFlag);
 		if (!passError.equals("")) {
 			errors.add(passError);
 		}
@@ -68,7 +69,7 @@ public class EmployeeValidator {
 			}
 		}
 
-	  //エラーがない場合は空文字を返却
+	//エラーがない場合は空文字を返却
 		return "";
 	}
 
@@ -92,7 +93,7 @@ public class EmployeeValidator {
 			return MessageConst.E_NONAME.getMessage();
 		}
 
-	  //入力値がある場合は空文字を返却
+	//入力値がある場合は空文字を返却
 		return "";
 	}
 
@@ -107,7 +108,7 @@ public class EmployeeValidator {
 			return MessageConst.E_NOPASSWORD.getMessage();
 		}
 
-	  //エラーがない場合は空文字を返却
+	//エラーがない場合は空文字を返却
 		return "";
 	}
 
