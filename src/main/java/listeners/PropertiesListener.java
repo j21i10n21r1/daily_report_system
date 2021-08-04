@@ -12,7 +12,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 @WebListener
-public class ProperitesListener implements ServletContextListener {
+public class PropertiesListener implements ServletContextListener {
 
 	public PropertiesListener() {
 
@@ -31,7 +31,7 @@ public class ProperitesListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		ServletContext context = arg0.getServletContext();
 
-	  //プロパティファイルを読み込み、アプリケーションスコープに設定する
+	//プロパティファイルを読み込み、アプリケーションスコープに設定する
 		try {
 			InputStream is = PropertiesListener.class.getClassLoader().getResourceAsStream("application.properties");
 
