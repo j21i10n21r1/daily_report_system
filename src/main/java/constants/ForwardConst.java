@@ -23,6 +23,7 @@ public enum ForwardConst {
 	CMD_LOGIN("login"),
 	CMD_LOGOUT("logout"),
 	CMD_NEW("entryNew"),
+	CMD_CREATE("create"),
 	CMD_EDIT("edit"),
 	CMD_UPDATE("update"),
 	CMD__DESTROY("destroy"),
