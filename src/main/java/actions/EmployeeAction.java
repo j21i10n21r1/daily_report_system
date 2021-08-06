@@ -99,10 +99,10 @@ public class EmployeeAction extends ActionBase {
 					null,
 					AttributeConst.DEL_FLAG_FALSE.getIntegerValue());
 
-		  //アプリケーションスコープからpepper文字列を取得
+		//アプリケーションスコープからpepper文字列を取得
 			String pepper = getContextScope(PropertyConst.PEPPER);
 
-		  //従業員情報登録
+		//従業員情報登録
 			List<String> errors = service.create(ev, pepper);
 
 			if (errors.size() > 0) {
@@ -115,15 +115,38 @@ public class EmployeeAction extends ActionBase {
 				forward(ForwardConst.FW_EMP_NEW);
 
 			} else {
-			  //登録中にエラーがなかった場合
+			//登録中にエラーがなかった場合
 
 				//セッションに登録完了のフラッシュメッセージを設定
 				putSessionScope(AttributeConst.FLUSH, MessageConst.I_REGISTERED.getMessage());
 
-			  //一覧画面にリダイレクト
+			//一覧画面にリダイレクト
 				redirect(ForwardConst.ACT_EMP, ForwardConst.CMD_INDEX);
 			}
 		}
+	}
+
+	/**
+	 * 詳細画面を表示する
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public void show() throws ServletException, IOException {
+
+	//idを条件に従業員データを取得する
+		EmployeeView ev = service.findOne(toNumber(getRequestParam(AttributeConst.EMP_ID)));
+
+		if (ev == null || ev.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
+
+		  //データが取得できなかった、または論理削除されている場合はエラー画面を表示
+			forward(ForwardConst.FW_ERR_UNKNOWN);
+			return;
+		}
+
+		putRequestScope(AttributeConst.EMPLOYEE, ev); //取得した従業員情報
+
+		//詳細画面を表示
+		forward(ForwardConst.FW_EMP_SHOW);
 	}
 
 }
