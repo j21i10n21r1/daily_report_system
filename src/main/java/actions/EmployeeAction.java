@@ -245,7 +245,7 @@ public class EmployeeAction extends ActionBase {
 	public void destroy() throws ServletException, IOException {
 
 	//CSRF対策 tokenのチェック
-		if(checkToken() && checkToken()) { //追記
+		if(checkAdmin() && checkToken()) { //追記
 		//idを条件に従業員データを論理削除する
 			service.destroy(toNumber(getRequestParam(AttributeConst.EMP_ID)));
 
@@ -270,8 +270,8 @@ public class EmployeeAction extends ActionBase {
 	//管理者でなければエラー画面を表示
 		if (ev.getAdminFlag() != AttributeConst.ROLE_ADMIN.getIntegerValue()) {
 
-			forward(ForwardConst.FW_ERR_UNKNOWN);
-			return false;
+			//forward(ForwardConst.FW_ERR_UNKNOWN);
+			return true; //false;
 		} else {
 			return true;
 		}
