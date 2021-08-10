@@ -47,7 +47,7 @@ public enum AttributeConst {
 	REP_COUNT("reports_count"),
 	REP_ID("id"),
 	REP_DATE("report_date"),
-	REDP_TITLE("title"),
+	REP_TITLE("title"),
 	REP_CONTENT("content");
 
 	private final String text;
