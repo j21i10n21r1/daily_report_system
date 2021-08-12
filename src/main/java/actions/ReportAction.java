@@ -195,6 +195,7 @@ public class ReportAction extends ActionBase{
 
 		//CSRF対策 tokenのチェック
 		if (checkToken()) {
+			System.out.println("checkToken()は" + checkToken());
 
 			//idを条件に日報データを取得する
 			ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));

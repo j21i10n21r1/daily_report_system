@@ -79,7 +79,8 @@ public class AuthAction extends ActionBase {
 				putSessionScope(AttributeConst.FLUSH, MessageConst.I_LOGINED.getMessage());
 			//トップページへリダイレクト
 				redirect(ForwardConst.ACT_TOP, ForwardConst.CMD_INDEX);
-			} else {
+			}
+		} else {
 				//認証失敗の場合
 
 				//CSRF対策用トークンを設定
@@ -91,7 +92,6 @@ public class AuthAction extends ActionBase {
 
 			//ログイン画面を表示
 				forward(ForwardConst.FW_LOGIN);
-			}
 		}
 	}
 
